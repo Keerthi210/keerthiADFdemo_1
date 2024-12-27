@@ -1,0 +1,67 @@
+{
+	"name": "varpipiline",
+	"properties": {
+		"activities": [
+			{
+				"name": "Get Metadata_data",
+				"type": "GetMetadata",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataset": {
+						"referenceName": "seleced_data",
+						"type": "DatasetReference"
+					},
+					"fieldList": [
+						"childItems"
+					],
+					"storeSettings": {
+						"type": "AzureBlobFSReadSettings",
+						"recursive": true,
+						"enablePartitionDiscovery": false
+					},
+					"formatSettings": {
+						"type": "DelimitedTextReadSettings"
+					}
+				}
+			},
+			{
+				"name": "variables",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "Get Metadata_data",
+						"dependencyConditions": [
+							"Completed"
+						]
+					}
+				],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "var_files",
+					"value": {
+						"value": "@activity('Get Metadata_data').output.childItems",
+						"type": "Expression"
+					}
+				}
+			}
+		],
+		"variables": {
+			"var_files": {
+				"type": "Array"
+			}
+		},
+		"annotations": []
+	}
+}
