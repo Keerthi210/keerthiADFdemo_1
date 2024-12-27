@@ -22,10 +22,6 @@
 		"Source_linked _service_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://adfstoragekeerthi.dfs.core.windows.net/"
-		},
-		"maanager_trigger_properties_typeProperties_scope": {
-			"type": "string",
-			"defaultValue": "/subscriptions/03a2d17f-3d57-4b1d-9544-a573c1227142/resourceGroups/ADF_DEMO_GROUP/providers/Microsoft.Storage/storageAccounts/adfstoragekeerthi"
 		}
 	},
 	"variables": {
@@ -1049,36 +1045,6 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/pipelines/Selcting _files')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/maanager_trigger')]",
-			"type": "Microsoft.DataFactory/factories/triggers",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"runtimeState": "Stopped",
-				"pipelines": [
-					{
-						"pipelineReference": {
-							"referenceName": "manager_trigger",
-							"type": "PipelineReference"
-						},
-						"parameters": {}
-					}
-				],
-				"type": "BlobEventsTrigger",
-				"typeProperties": {
-					"blobPathBeginsWith": "/source/blobs/csvfiles/Fact_Sales_1.csv",
-					"ignoreEmptyBlobs": true,
-					"scope": "[parameters('maanager_trigger_properties_typeProperties_scope')]",
-					"events": [
-						"Microsoft.Storage.BlobCreated"
-					]
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/pipelines/manager_trigger')]"
 			]
 		},
 		{
