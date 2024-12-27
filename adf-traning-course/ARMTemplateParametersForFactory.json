@@ -16,6 +16,9 @@
 		},
 		"Source_linked _service_properties_typeProperties_url": {
 			"value": "https://adfstoragekeerthi.dfs.core.windows.net/"
+		},
+		"maanager_trigger_properties_typeProperties_scope": {
+			"value": "/subscriptions/03a2d17f-3d57-4b1d-9544-a573c1227142/resourceGroups/ADF_DEMO_GROUP/providers/Microsoft.Storage/storageAccounts/adfstoragekeerthi"
 		}
 	}
 }

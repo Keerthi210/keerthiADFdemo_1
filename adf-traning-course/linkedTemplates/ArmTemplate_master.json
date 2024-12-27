@@ -23,6 +23,10 @@
 			"type": "string",
 			"defaultValue": "https://adfstoragekeerthi.dfs.core.windows.net/"
 		},
+		"maanager_trigger_properties_typeProperties_scope": {
+			"type": "string",
+			"defaultValue": "/subscriptions/03a2d17f-3d57-4b1d-9544-a573c1227142/resourceGroups/ADF_DEMO_GROUP/providers/Microsoft.Storage/storageAccounts/adfstoragekeerthi"
+		},
 		"containerUri": {
 			"type": "string",
 			"metadata": "URI to storage account containing linked ARM templates"
@@ -79,6 +83,9 @@
 				"parameters": {
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
+					},
+					"maanager_trigger_properties_typeProperties_scope": {
+						"value": "[parameters('maanager_trigger_properties_typeProperties_scope')]"
 					}
 				}
 			},
